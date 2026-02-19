@@ -2,6 +2,7 @@
 
 [![Java](https://img.shields.io/badge/Java-21+-orange.svg)](https://openjdk.org/projects/jdk/21/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Build](https://github.com/Sinio-Manoka/quill/actions/workflows/build.yml/badge.svg)](https://github.com/Sinio-Manoka/quill/actions/workflows/build.yml)
 
 A modern, structured logging library for Java 21+. Built from scratch with JSON-first output, zero dependencies, and
 virtual thread support.
@@ -40,7 +41,7 @@ thread-per-request architectures, and plain text logs. Quill brings logging into
 
 ```kotlin
 dependencies {
-    implementation("com.quill:quill:1.0.0")
+    implementation("com.github.Sinio-Manoka:quill:1.0.0")
 }
 ```
 
@@ -48,7 +49,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.quill:quill:1.0.0'
+    implementation 'com.github.Sinio-Manoka:quill:1.0.0'
 }
 ```
 
@@ -57,7 +58,7 @@ dependencies {
 ```xml
 
 <dependency>
-    <groupId>com.quill</groupId>
+    <groupId>com.github.Sinio-Manoka</groupId>
     <artifactId>quill</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -158,7 +159,7 @@ dependencies {
 ```xml
 
 <dependency>
-    <groupId>com.quill</groupId>
+    <groupId>com.github.Sinio-Manoka</groupId>
     <artifactId>quill</artifactId>
     <version>1.0.0</version>
     <scope>system</scope>
