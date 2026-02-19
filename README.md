@@ -41,7 +41,7 @@ thread-per-request architectures, and plain text logs. Quill brings logging into
 
 ```kotlin
 dependencies {
-    implementation("com.github.Sinio-Manoka:quill:1.0.0")
+    implementation("io.github.sinio-manoka:quill:1.0.0")
 }
 ```
 
@@ -49,7 +49,7 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.github.Sinio-Manoka:quill:1.0.0'
+    implementation 'io.github.sinio-manoka:quill:1.0.0'
 }
 ```
 
@@ -58,7 +58,7 @@ dependencies {
 ```xml
 
 <dependency>
-    <groupId>com.github.Sinio-Manoka</groupId>
+    <groupId>io.github.sinio-manoka</groupId>
     <artifactId>quill</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -159,7 +159,7 @@ dependencies {
 ```xml
 
 <dependency>
-    <groupId>com.github.Sinio-Manoka</groupId>
+    <groupId>io.github.sinio-manoka</groupId>
     <artifactId>quill</artifactId>
     <version>1.0.0</version>
     <scope>system</scope>

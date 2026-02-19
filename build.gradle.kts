@@ -1,10 +1,11 @@
 plugins {
     `java`
     `maven-publish`
+    signing
     application
 }
 
-group = "com.github.Sinio-Manoka"
+group = "io.github.sinio-manoka"
 version = "1.0.0"
 
 repositories {
@@ -84,7 +85,6 @@ publishing {
                     url.set("https://github.com/Sinio-Manoka/quill")
                 }
 
-                // Maven Central requires signing info
                 issueManagement {
                     system.set("GitHub")
                     url.set("https://github.com/Sinio-Manoka/quill/issues")
@@ -94,6 +94,7 @@ publishing {
     }
 
     repositories {
+        // GitHub Packages (automatic publishing)
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/Sinio-Manoka/quill")
@@ -103,4 +104,32 @@ publishing {
             }
         }
     }
+}
+
+// Signing configuration (for Maven Central bundle)
+signing {
+    useGpgCmd()
+    sign(publishing.publications["mavenJava"])
+}
+
+tasks.withType<Sign>().configureEach {
+    // Only sign during release, not during regular builds
+    onlyIf { project.hasProperty("release") }
+}
+
+// Task to create a Maven Central bundle for manual upload
+tasks.register<Zip>("mavenCentralBundle") {
+    archiveFileName.set("quill-${project.version}-bundle.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("bundle"))
+
+    from(layout.buildDirectory.dir("libs")) {
+        include("**/*.jar")
+        include("**/*.pom")
+        include("**/*.module")
+        if (project.hasProperty("release")) {
+            include("**/*.asc")
+        }
+    }
+
+    into("io/github/sinio-manoka/quill/${project.version}")
 }
