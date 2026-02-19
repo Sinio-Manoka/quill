@@ -1,0 +1,4 @@
+{"timestamp":"2026-02-18T22:17:13.385Z","level":"INFO","logger":"Main","thread":"main","message":"Rolling log entry 0","iteration":0,"data":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+{"timestamp":"2026-02-18T22:17:13.385Z","level":"INFO","logger":"Main","thread":"main","message":"Rolling log entry 1","iteration":1,"data":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+{"timestamp":"2026-02-18T22:17:13.385Z","level":"INFO","logger":"Main","thread":"main","message":"Rolling log entry 2","iteration":2,"data":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
+{"timestamp":"2026-02-18T22:17:13.385Z","level":"INFO","logger":"Main","thread":"main","message":"Rolling log entry 3","iteration":3,"data":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}

@@ -1,0 +1,3 @@
+{"timestamp":"2026-02-18T22:17:13.378Z","level":"INFO","logger":"Main","thread":"main","message":"This goes to a file","file":"logs/app.log"}
+{"timestamp":"2026-02-18T22:17:13.379Z","level":"INFO","logger":"Main","thread":"main","message":"File appenders write JSON logs to disk"}
+{"timestamp":"2026-02-18T22:17:13.379Z","level":"WARN","logger":"Main","thread":"main","message":"Log file","location":"logs/app.log"}

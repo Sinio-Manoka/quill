@@ -1,0 +1,3 @@
+{"timestamp":"2026-02-18T22:17:13.517Z","level":"INFO","logger":"Main","thread":"main","message":"Processing payment","amount":99.99,"currency":"USD","_userId":"12345","_correlationId":"final-demo"}
+{"timestamp":"2026-02-18T22:17:13.517Z","level":"WARN","logger":"Main","thread":"main","message":"Low disk space","remaining":"5%","_userId":"12345","_correlationId":"final-demo"}
+{"timestamp":"2026-02-18T22:17:13.517Z","level":"ERROR","logger":"Main","thread":"main","message":"Connection timeout","endpoint":"/api/v1/resource","_userId":"12345","_correlationId":"final-demo"}

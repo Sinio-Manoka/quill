@@ -1,0 +1,2 @@
+{"timestamp":"2026-02-18T23:52:50.568Z","level":"WARN","logger":"com.quill.PaymentService","thread":"main","message":"High latency detected","ms":1500,"_requestId":"final-req-123","_userId":"9999"}
+{"timestamp":"2026-02-18T23:52:50.572Z","level":"ERROR","logger":"com.quill.PaymentService","thread":"main","message":"Payment gateway timeout","gateway":"stripe","_requestId":"final-req-123","_userId":"9999"}
