@@ -49,7 +49,7 @@ public record LogConfig(
     }
 
     /**
-     * Checks if sampling is enabled (rate < 1.0).
+     * Checks if sampling is enabled (rate &lt; 1.0).
      */
     public boolean isSamplingEnabled() {
         return samplingRate < 1.0;

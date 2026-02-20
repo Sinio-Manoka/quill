@@ -2,7 +2,7 @@ package com.quill.model;
 
 /**
  * Log level enumeration with severity ordering.
- * Lower ordinal values indicate lower severity (TRACE < DEBUG < INFO < WARN < ERROR).
+ * Lower ordinal values indicate lower severity (TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR).
  */
 public enum Level {
     TRACE(0),

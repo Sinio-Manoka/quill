@@ -120,7 +120,7 @@ class LogConfigTest {
     }
 
     @Test
-    @DisplayName("isSamplingEnabled returns true when rate < 1.0")
+    @DisplayName("isSamplingEnabled returns true when rate &lt; 1.0")
     void isSamplingEnabledReturnsTrueWhenRateLessThanOne() {
         LogConfig config = new LogConfig(Level.INFO, List.of(), false, 0.5, Map.of());
         assertTrue(config.isSamplingEnabled());
