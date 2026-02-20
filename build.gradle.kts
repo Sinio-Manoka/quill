@@ -117,18 +117,87 @@ tasks.withType<Sign>().configureEach {
     onlyIf { project.hasProperty("release") }
 }
 
+// Task to generate checksums for Maven Central bundle
+tasks.register("generateChecksums") {
+    dependsOn("build", "publishToMavenLocal")
+
+    val libsDir = layout.buildDirectory.dir("libs").get().asFile
+    val mavenDir = file("${System.getProperty("user.home")}/.m2/repository/io/github/sinio-manoka/quill/${project.version}")
+
+    inputs.dir(libsDir)
+    inputs.dir(mavenDir)
+
+    doLast {
+        // Generate checksums for JAR files
+        val jarFiles = listOf(
+            libsDir.resolve("quill-${project.version}.jar"),
+            libsDir.resolve("quill-${project.version}-javadoc.jar"),
+            libsDir.resolve("quill-${project.version}-sources.jar")
+        )
+
+        // Generate checksums for POM and module files
+        val pomFiles = listOf(
+            mavenDir.resolve("quill-${project.version}.pom"),
+            mavenDir.resolve("quill-${project.version}.module")
+        )
+
+        (jarFiles + pomFiles).forEach { file ->
+            if (file.exists()) {
+                // Generate MD5 (creates .MD5 file)
+                ant.invokeMethod("checksum", mapOf(
+                    "file" to file,
+                    "algorithm" to "MD5",
+                    "todir" to file.parentFile
+                ))
+                // Generate SHA-1 (creates .SHA-1 file)
+                ant.invokeMethod("checksum", mapOf(
+                    "file" to file,
+                    "algorithm" to "SHA-1",
+                    "todir" to file.parentFile
+                ))
+                // Rename uppercase extensions to lowercase
+                file.resolveSibling("${file.name}.MD5")
+                    .takeIf { it.exists() }?.renameTo(file.resolveSibling("${file.name}.md5"))
+                file.resolveSibling("${file.name}.SHA-1")
+                    .takeIf { it.exists() }?.renameTo(file.resolveSibling("${file.name}.sha1"))
+            }
+        }
+    }
+}
+
 // Task to create a Maven Central bundle for manual upload
 tasks.register<Zip>("mavenCentralBundle") {
     archiveFileName.set("quill-${project.version}-bundle.zip")
     destinationDirectory.set(layout.buildDirectory.dir("bundle"))
 
+    dependsOn("build", "publishToMavenLocal", "generateChecksums")
+
+    // JAR files with signatures and checksums from build/libs
     from(layout.buildDirectory.dir("libs")) {
-        include("**/*.jar")
-        include("**/*.pom")
-        include("**/*.module")
-        if (project.hasProperty("release")) {
-            include("**/*.asc")
-        }
+        include("quill-${project.version}.jar")
+        include("quill-${project.version}.jar.asc")
+        include("quill-${project.version}.jar.md5")
+        include("quill-${project.version}.jar.sha1")
+        include("quill-${project.version}-javadoc.jar")
+        include("quill-${project.version}-javadoc.jar.asc")
+        include("quill-${project.version}-javadoc.jar.md5")
+        include("quill-${project.version}-javadoc.jar.sha1")
+        include("quill-${project.version}-sources.jar")
+        include("quill-${project.version}-sources.jar.asc")
+        include("quill-${project.version}-sources.jar.md5")
+        include("quill-${project.version}-sources.jar.sha1")
+    }
+
+    // POM, module files with signatures and checksums from Maven local
+    from("${System.getProperty("user.home")}/.m2/repository/io/github/sinio-manoka/quill/${project.version}") {
+        include("quill-${project.version}.pom")
+        include("quill-${project.version}.pom.asc")
+        include("quill-${project.version}.pom.md5")
+        include("quill-${project.version}.pom.sha1")
+        include("quill-${project.version}.module")
+        include("quill-${project.version}.module.asc")
+        include("quill-${project.version}.module.md5")
+        include("quill-${project.version}.module.sha1")
     }
 
     into("io/github/sinio-manoka/quill/${project.version}")
